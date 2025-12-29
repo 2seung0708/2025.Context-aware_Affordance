@@ -1,5 +1,8 @@
 #  Context-aware Affordance Grounding
+
 This is the PyTorch implementation of "Affordance Grounding in Contextual Interaction Relations".
+
+This code was written based on [https://github.com/woyut/WSAG-PLSP.git](https://github.com/woyut/WSAG-PLSP.git).
 
 ## Data preparation
 
