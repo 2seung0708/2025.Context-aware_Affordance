@@ -29,7 +29,7 @@ This is the PyTorch implementation of "Affordance Grounding in Contextual Intera
 To train the model, run:
 
 ```
-python train.py --config context_aware_seen.yaml --seed 10000
+python train_context_aware.py --config context_aware_seen.yaml --seed 10000
 ```
 
 Please modify the paths in the .yaml files to the locations of the datasets, pre-trained ViT weights, and `work_dir`.
@@ -43,8 +43,7 @@ Our trained model can be found
 To evaluate the trained model, run:
 
 ```
-# Train for Context-aware Affordance Grounding
-python eval.py --config configs/context_aware_seen_test.yaml
+python eval_context_aware.py --config configs/context_aware_seen_test.yaml
 ```
 
 Please modify the paths in the .yaml files to the locations of the datasets, pre-trained ViT weights, and `work_dir`.
