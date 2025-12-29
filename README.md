@@ -43,6 +43,7 @@ Our trained model can be found
 To evaluate the trained model, run:
 
 ```
+# Train for Context-aware Affordance Grounding
 python eval.py --config configs/context_aware_seen_test.yaml
 ```
 
