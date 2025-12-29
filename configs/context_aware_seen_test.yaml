@@ -1,0 +1,37 @@
+work_dir: &work_dir logs/{exp_name}
+deterministic: False
+
+data_dir: {AGD20K_dir}
+GT_data_dir: {sampled Contextual-AGD20K_dir} ## ex) ../../06_Affordance-R1/Affordance-R1/vis_results_refine_anno_v2/sampled/AGD20K_refine/ 
+
+
+load:
+  encoder_ckpt: # leave blank for testing
+  all_ckpt: logs/{exp_name}/ckpt/bestKLD.ckpt 
+  # all_ckpt: logs/seen/ckpt/bestKLD.ckpt ## wsag-plsp 성능
+
+batch_size: 10
+img_size: 224
+split_type: Unseen # Set "Seen" or "Unseen". if Unseen -> action unseen
+num_exo: 1
+PL_mode: refined
+aug4imgRatio: 0.5
+
+model:
+  encoder_type: CLIP
+  encoder_params:
+    width: 768
+    layers: 12
+    heads: 12
+    output_dim: 512
+  decoder_embed_dim: 512
+
+  pred_model_type: SAM
+  pred_decoder_args:
+    mlp_dim: 2048
+    depth: 2
+    use_up: 2
+    use_additional_token: True
+    conv_first: True
+
+  margin: 0.1

@@ -1,0 +1,33 @@
+{'work_dir': 'logs2/5_ours_rl0.0001_wd0.01_lr_step20_gamma0.5_noun1-part0.1-context_sim0.01_exo0_wo_passive-token', 'deterministic': False, 'data_dir': '../../AGD20K', 'GT_data_dir': '../../06_Affordance-R1/Affordance-R1/vis_results_refine_anno_v2/sampled/AGD20K_refine/', 'load': {'encoder_ckpt': None, 'all_ckpt': 'logs2/5_ours_rl0.0001_wd0.01_lr_step20_gamma0.5_noun1-part0.1-context_sim0.01_exo0_wo_passive-token/ckpt/bestKLD.ckpt'}, 'batch_size': 10, 'img_size': 224, 'split_type': 'Seen', 'num_exo': 1, 'PL_mode': 'refined', 'aug4imgRatio': 0.5, 'model': {'encoder_type': 'CLIP', 'encoder_params': {'width': 768, 'layers': 12, 'heads': 12, 'output_dim': 512}, 'decoder_embed_dim': 512, 'pred_model_type': 'SAM', 'pred_decoder_args': {'mlp_dim': 2048, 'depth': 2, 'use_up': 2, 'use_additional_token': True, 'conv_first': True}, 'margin': 0.1}}
+======================Config:======================
+GT_data_dir: ../../06_Affordance-R1/Affordance-R1/vis_results_refine_anno_v2/sampled/AGD20K_refine/
+PL_mode: refined
+aug4imgRatio: 0.5
+batch_size: 10
+data_dir: ../../AGD20K
+deterministic: false
+img_size: 224
+load:
+  all_ckpt: logs2/5_ours_rl0.0001_wd0.01_lr_step20_gamma0.5_noun1-part0.1-context_sim0.01_exo0_wo_passive-token/ckpt/bestKLD.ckpt
+  encoder_ckpt: null
+model:
+  decoder_embed_dim: 512
+  encoder_params:
+    heads: 12
+    layers: 12
+    output_dim: 512
+    width: 768
+  encoder_type: CLIP
+  margin: 0.1
+  pred_decoder_args:
+    conv_first: true
+    depth: 2
+    mlp_dim: 2048
+    use_additional_token: true
+    use_up: 2
+  pred_model_type: SAM
+num_exo: 1
+split_type: Seen
+work_dir: logs2/5_ours_rl0.0001_wd0.01_lr_step20_gamma0.5_noun1-part0.1-context_sim0.01_exo0_wo_passive-token
+
+Set random seed to 1, deterministic: False

@@ -1,0 +1,375 @@
+{'work_dir': 'logs2/unseen_ours_wo_active', 'deterministic': False, 'data_dir': '../../AGD20K', 'GT_data_dir': '../../06_Affordance-R1/Affordance-R1/vis_results_refine_anno_v2/sampled/AGD20K_refine/', 'load': {'encoder_ckpt': None, 'all_ckpt': 'logs2/5_ours_rl0.0001_wd0.01_lr_step20_gamma0.5_noun1-part0.1-context_sim0.01_exo0_wo_active-token/ckpt/bestKLD.ckpt'}, 'batch_size': 10, 'img_size': 224, 'split_type': 'Unseen', 'num_exo': 1, 'PL_mode': 'refined', 'aug4imgRatio': 0.5, 'model': {'encoder_type': 'CLIP', 'encoder_params': {'width': 768, 'layers': 12, 'heads': 12, 'output_dim': 512}, 'decoder_embed_dim': 512, 'pred_model_type': 'SAM', 'pred_decoder_args': {'mlp_dim': 2048, 'depth': 2, 'use_up': 2, 'use_additional_token': True, 'conv_first': True}, 'margin': 0.1}}
+======================Config:======================
+GT_data_dir: ../../06_Affordance-R1/Affordance-R1/vis_results_refine_anno_v2/sampled/AGD20K_refine/
+PL_mode: refined
+aug4imgRatio: 0.5
+batch_size: 10
+data_dir: ../../AGD20K
+deterministic: false
+img_size: 224
+load:
+  all_ckpt: logs2/5_ours_rl0.0001_wd0.01_lr_step20_gamma0.5_noun1-part0.1-context_sim0.01_exo0_wo_active-token/ckpt/bestKLD.ckpt
+  encoder_ckpt: null
+model:
+  decoder_embed_dim: 512
+  encoder_params:
+    heads: 12
+    layers: 12
+    output_dim: 512
+    width: 768
+  encoder_type: CLIP
+  margin: 0.1
+  pred_decoder_args:
+    conv_first: true
+    depth: 2
+    mlp_dim: 2048
+    use_additional_token: true
+    use_up: 2
+  pred_model_type: SAM
+num_exo: 1
+split_type: Unseen
+work_dir: logs2/unseen_ours_wo_active
+
+Set random seed to 1, deterministic: False
+[], [] are misaligned params in Model
+------------------------
+#Params: 114358820
+#Encoder Params: 86192640
+#Final Decoder Params: 12152576
+Model:
+ModelAGDsup(
+  (encoder): VisionTransformer(
+    (conv1): Conv2d(3, 768, kernel_size=(16, 16), stride=(16, 16), bias=False)
+    (ln_pre): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+    (transformer): Transformer(
+      (resblocks): Sequential(
+        (0): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (1): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (2): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (3): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (4): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (5): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (6): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (7): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (8): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (9): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (10): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (11): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (ln_post): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  )
+  (verb_fuser): Affordance_Decoder(
+    (regressor_blocks): ModuleList(
+      (0): RegressorBlock(
+        (norm1_q): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_k): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_v): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm2_cross): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (cross_attn): CrossAttention(
+          (q): Linear(in_features=512, out_features=512, bias=False)
+          (k): Linear(in_features=512, out_features=512, bias=False)
+          (v): Linear(in_features=512, out_features=512, bias=False)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (mlp_cross): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): RegressorBlock(
+        (norm1_q): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_k): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_v): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm2_cross): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (cross_attn): CrossAttention(
+          (q): Linear(in_features=512, out_features=512, bias=False)
+          (k): Linear(in_features=512, out_features=512, bias=False)
+          (v): Linear(in_features=512, out_features=512, bias=False)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(p=0.03333333507180214)
+        (mlp_cross): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): RegressorBlock(
+        (norm1_q): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_k): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_v): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm2_cross): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (cross_attn): CrossAttention(
+          (q): Linear(in_features=512, out_features=512, bias=False)
+          (k): Linear(in_features=512, out_features=512, bias=False)
+          (v): Linear(in_features=512, out_features=512, bias=False)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(p=0.06666666269302368)
+        (mlp_cross): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (3): RegressorBlock(
+        (norm1_q): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_k): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_v): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm2_cross): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (cross_attn): CrossAttention(
+          (q): Linear(in_features=512, out_features=512, bias=False)
+          (k): Linear(in_features=512, out_features=512, bias=False)
+          (v): Linear(in_features=512, out_features=512, bias=False)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(p=0.10000000149011612)
+        (mlp_cross): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (act): GELU(approximate='none')
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+  )
+  (pred_decoder): SAM_Decoder_Simple(
+    (transformer): TwoWayTransformer(
+      (layers): ModuleList(
+        (0-1): 2 x TwoWayAttentionBlock(
+          (self_attn): Attention(
+            (q_proj): Linear(in_features=512, out_features=512, bias=True)
+            (k_proj): Linear(in_features=512, out_features=512, bias=True)
+            (v_proj): Linear(in_features=512, out_features=512, bias=True)
+            (out_proj): Linear(in_features=512, out_features=512, bias=True)
+          )
+          (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (cross_attn_token_to_image): Attention(
+            (q_proj): Linear(in_features=512, out_features=256, bias=True)
+            (k_proj): Linear(in_features=512, out_features=256, bias=True)
+            (v_proj): Linear(in_features=512, out_features=256, bias=True)
+            (out_proj): Linear(in_features=256, out_features=512, bias=True)
+          )
+          (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (mlp): MLPBlock(
+            (lin1): Linear(in_features=512, out_features=2048, bias=True)
+            (lin2): Linear(in_features=2048, out_features=512, bias=True)
+            (act): ReLU()
+          )
+          (norm3): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (norm4): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (cross_attn_image_to_token): Attention(
+            (q_proj): Linear(in_features=512, out_features=256, bias=True)
+            (k_proj): Linear(in_features=512, out_features=256, bias=True)
+            (v_proj): Linear(in_features=512, out_features=256, bias=True)
+            (out_proj): Linear(in_features=256, out_features=512, bias=True)
+          )
+        )
+      )
+      (final_attn_token_to_image): Attention(
+        (q_proj): Linear(in_features=512, out_features=256, bias=True)
+        (k_proj): Linear(in_features=512, out_features=256, bias=True)
+        (v_proj): Linear(in_features=512, out_features=256, bias=True)
+        (out_proj): Linear(in_features=256, out_features=512, bias=True)
+      )
+      (norm_final_attn): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    )
+    (add_token): Embedding(1, 512)
+    (output_upscaling): Sequential(
+      (0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): LayerNorm2d()
+      (2): GELU(approximate='none')
+      (3): ConvTranspose2d(512, 128, kernel_size=(2, 2), stride=(2, 2))
+      (4): LayerNorm2d()
+      (5): GELU(approximate='none')
+      (6): ConvTranspose2d(128, 64, kernel_size=(2, 2), stride=(2, 2))
+      (7): GELU(approximate='none')
+    )
+    (output_hypernetworks_mlp): MLP(
+      (layers): ModuleList(
+        (0-1): 2 x Linear(in_features=512, out_features=512, bias=True)
+        (2): Linear(in_features=512, out_features=64, bias=True)
+      )
+    )
+    (pe_layer): PositionEmbeddingRandom()
+  )
+  (exo_cls): Sequential(
+    (0): Linear(in_features=512, out_features=256, bias=True)
+    (1): GELU(approximate='none')
+    (2): Linear(in_features=256, out_features=36, bias=True)
+  )
+  (noun_transform): Sequential(
+    (0): Linear(in_features=512, out_features=512, bias=True)
+    (1): GELU(approximate='none')
+    (2): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (reason): Sequential(
+    (0): Linear(in_features=1024, out_features=512, bias=True)
+    (1): GELU(approximate='none')
+    (2): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (context_aware): Sequential(
+    (0): Linear(in_features=1024, out_features=512, bias=True)
+    (1): GELU(approximate='none')
+    (2): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (active_transform): Sequential(
+    (0): Linear(in_features=512, out_features=512, bias=True)
+    (1): GELU(approximate='none')
+    (2): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (passive_transform): Sequential(
+    (0): Linear(in_features=512, out_features=512, bias=True)
+    (1): GELU(approximate='none')
+    (2): Linear(in_features=512, out_features=512, bias=True)
+  )
+)
+Result on AGD: 
+KLD=1.861314058303833, SIM=0.2647557556629181, NSS=2.440051555633545

@@ -1,0 +1,808 @@
+{'work_dir': 'logs2/wsag-plsp_rl0.0001_wd0.01_lr_step20_gamma0.5_context_sim1_exo1_direct_feature', 'deterministic': False, 'data_dir': '../../AGD20K', 'GT_data_dir': '../../06_Affordance-R1/Affordance-R1/vis_results_refine_anno_v2/sampled/AGD20K_refine/', 'load': {'encoder_ckpt': './ViT-B-16.pt', 'all_ckpt': None}, 'batch_size': 32, 'img_size': 224, 'split_type': 'Seen', 'num_exo': 1, 'PL_mode': 'refined', 'aug4imgRatio': 0.5, 'optimizer': {'lr': 0.0001, 'lr_encoder_coeff': 0.1, 'betas': [0.9, 0.95], 'wd': 0.01, 'max_iter': 5000000, 'lr_step': 20, 'lr_gamma': 0.5, 'num_epochs': 40, 'accum_iter': 2, 'sche_type': 'step'}, 'model': {'encoder_type': 'CLIP', 'encoder_params': {'width': 768, 'layers': 12, 'heads': 12, 'output_dim': 512}, 'decoder_embed_dim': 512, 'pred_model_type': 'SAM', 'pred_decoder_args': {'mlp_dim': 2048, 'depth': 2, 'use_up': 2, 'use_additional_token': True, 'conv_first': True}, 'margin': 0.1}, 'loss': {'kl_loss_coeff': 1.0, 'sim_loss_coeff': 10.0, 'exo_cls_coeff': 10.0, 'noun_sim_coeff': 1.0, 'part_sim_coeff': 0.1, 'context_sim_coeff': 1.0}}
+======================Config:======================
+GT_data_dir: ../../06_Affordance-R1/Affordance-R1/vis_results_refine_anno_v2/sampled/AGD20K_refine/
+PL_mode: refined
+aug4imgRatio: 0.5
+batch_size: 32
+data_dir: ../../AGD20K
+deterministic: false
+img_size: 224
+load:
+  all_ckpt: null
+  encoder_ckpt: ./ViT-B-16.pt
+loss:
+  context_sim_coeff: 1.0
+  exo_cls_coeff: 10.0
+  kl_loss_coeff: 1.0
+  noun_sim_coeff: 1.0
+  part_sim_coeff: 0.1
+  sim_loss_coeff: 10.0
+model:
+  decoder_embed_dim: 512
+  encoder_params:
+    heads: 12
+    layers: 12
+    output_dim: 512
+    width: 768
+  encoder_type: CLIP
+  margin: 0.1
+  pred_decoder_args:
+    conv_first: true
+    depth: 2
+    mlp_dim: 2048
+    use_additional_token: true
+    use_up: 2
+  pred_model_type: SAM
+num_exo: 1
+optimizer:
+  accum_iter: 2
+  betas:
+  - 0.9
+  - 0.95
+  lr: 0.0001
+  lr_encoder_coeff: 0.1
+  lr_gamma: 0.5
+  lr_step: 20
+  max_iter: 5000000
+  num_epochs: 40
+  sche_type: step
+  wd: 0.01
+split_type: Seen
+work_dir: logs2/wsag-plsp_rl0.0001_wd0.01_lr_step20_gamma0.5_context_sim1_exo1_direct_feature
+
+Set random seed to 0, deterministic: False
+[], [] are misaligned params in CLIP Encoder
+#Params: 114358820
+#Encoder Params: 86192640
+#Final Decoder Params: 12152576
+Model:
+ModelAGDsup(
+  (encoder): VisionTransformer(
+    (conv1): Conv2d(3, 768, kernel_size=(16, 16), stride=(16, 16), bias=False)
+    (ln_pre): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+    (transformer): Transformer(
+      (resblocks): Sequential(
+        (0): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (1): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (2): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (3): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (4): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (5): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (6): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (7): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (8): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (9): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (10): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (11): ResidualAttentionBlock(
+          (attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+          )
+          (ln_1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (mlp): Sequential(
+            (c_fc): Linear(in_features=768, out_features=3072, bias=True)
+            (gelu): QuickGELU()
+            (c_proj): Linear(in_features=3072, out_features=768, bias=True)
+          )
+          (ln_2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (ln_post): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  )
+  (verb_fuser): Affordance_Decoder(
+    (regressor_blocks): ModuleList(
+      (0): RegressorBlock(
+        (norm1_q): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_k): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_v): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm2_cross): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (cross_attn): CrossAttention(
+          (q): Linear(in_features=512, out_features=512, bias=False)
+          (k): Linear(in_features=512, out_features=512, bias=False)
+          (v): Linear(in_features=512, out_features=512, bias=False)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): Identity()
+        (mlp_cross): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (1): RegressorBlock(
+        (norm1_q): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_k): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_v): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm2_cross): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (cross_attn): CrossAttention(
+          (q): Linear(in_features=512, out_features=512, bias=False)
+          (k): Linear(in_features=512, out_features=512, bias=False)
+          (v): Linear(in_features=512, out_features=512, bias=False)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(p=0.03333333507180214)
+        (mlp_cross): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (2): RegressorBlock(
+        (norm1_q): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_k): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_v): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm2_cross): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (cross_attn): CrossAttention(
+          (q): Linear(in_features=512, out_features=512, bias=False)
+          (k): Linear(in_features=512, out_features=512, bias=False)
+          (v): Linear(in_features=512, out_features=512, bias=False)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(p=0.06666666269302368)
+        (mlp_cross): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (3): RegressorBlock(
+        (norm1_q): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_k): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm1_v): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (norm2_cross): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+        (cross_attn): CrossAttention(
+          (q): Linear(in_features=512, out_features=512, bias=False)
+          (k): Linear(in_features=512, out_features=512, bias=False)
+          (v): Linear(in_features=512, out_features=512, bias=False)
+          (attn_drop): Dropout(p=0.0, inplace=False)
+          (proj): Linear(in_features=512, out_features=512, bias=True)
+          (proj_drop): Dropout(p=0.0, inplace=False)
+        )
+        (drop_path): DropPath(p=0.10000000149011612)
+        (mlp_cross): Mlp(
+          (fc1): Linear(in_features=512, out_features=2048, bias=True)
+          (act): GELU()
+          (fc2): Linear(in_features=2048, out_features=512, bias=True)
+          (drop): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+  )
+  (pred_decoder): SAM_Decoder_Simple(
+    (transformer): TwoWayTransformer(
+      (layers): ModuleList(
+        (0): TwoWayAttentionBlock(
+          (self_attn): Attention(
+            (q_proj): Linear(in_features=512, out_features=512, bias=True)
+            (k_proj): Linear(in_features=512, out_features=512, bias=True)
+            (v_proj): Linear(in_features=512, out_features=512, bias=True)
+            (out_proj): Linear(in_features=512, out_features=512, bias=True)
+          )
+          (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (cross_attn_token_to_image): Attention(
+            (q_proj): Linear(in_features=512, out_features=256, bias=True)
+            (k_proj): Linear(in_features=512, out_features=256, bias=True)
+            (v_proj): Linear(in_features=512, out_features=256, bias=True)
+            (out_proj): Linear(in_features=256, out_features=512, bias=True)
+          )
+          (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (mlp): MLPBlock(
+            (lin1): Linear(in_features=512, out_features=2048, bias=True)
+            (lin2): Linear(in_features=2048, out_features=512, bias=True)
+            (act): ReLU()
+          )
+          (norm3): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (norm4): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (cross_attn_image_to_token): Attention(
+            (q_proj): Linear(in_features=512, out_features=256, bias=True)
+            (k_proj): Linear(in_features=512, out_features=256, bias=True)
+            (v_proj): Linear(in_features=512, out_features=256, bias=True)
+            (out_proj): Linear(in_features=256, out_features=512, bias=True)
+          )
+        )
+        (1): TwoWayAttentionBlock(
+          (self_attn): Attention(
+            (q_proj): Linear(in_features=512, out_features=512, bias=True)
+            (k_proj): Linear(in_features=512, out_features=512, bias=True)
+            (v_proj): Linear(in_features=512, out_features=512, bias=True)
+            (out_proj): Linear(in_features=512, out_features=512, bias=True)
+          )
+          (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (cross_attn_token_to_image): Attention(
+            (q_proj): Linear(in_features=512, out_features=256, bias=True)
+            (k_proj): Linear(in_features=512, out_features=256, bias=True)
+            (v_proj): Linear(in_features=512, out_features=256, bias=True)
+            (out_proj): Linear(in_features=256, out_features=512, bias=True)
+          )
+          (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (mlp): MLPBlock(
+            (lin1): Linear(in_features=512, out_features=2048, bias=True)
+            (lin2): Linear(in_features=2048, out_features=512, bias=True)
+            (act): ReLU()
+          )
+          (norm3): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (norm4): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+          (cross_attn_image_to_token): Attention(
+            (q_proj): Linear(in_features=512, out_features=256, bias=True)
+            (k_proj): Linear(in_features=512, out_features=256, bias=True)
+            (v_proj): Linear(in_features=512, out_features=256, bias=True)
+            (out_proj): Linear(in_features=256, out_features=512, bias=True)
+          )
+        )
+      )
+      (final_attn_token_to_image): Attention(
+        (q_proj): Linear(in_features=512, out_features=256, bias=True)
+        (k_proj): Linear(in_features=512, out_features=256, bias=True)
+        (v_proj): Linear(in_features=512, out_features=256, bias=True)
+        (out_proj): Linear(in_features=256, out_features=512, bias=True)
+      )
+      (norm_final_attn): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+    )
+    (add_token): Embedding(1, 512)
+    (output_upscaling): Sequential(
+      (0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): LayerNorm2d()
+      (2): GELU()
+      (3): ConvTranspose2d(512, 128, kernel_size=(2, 2), stride=(2, 2))
+      (4): LayerNorm2d()
+      (5): GELU()
+      (6): ConvTranspose2d(128, 64, kernel_size=(2, 2), stride=(2, 2))
+      (7): GELU()
+    )
+    (output_hypernetworks_mlp): MLP(
+      (layers): ModuleList(
+        (0): Linear(in_features=512, out_features=512, bias=True)
+        (1): Linear(in_features=512, out_features=512, bias=True)
+        (2): Linear(in_features=512, out_features=64, bias=True)
+      )
+    )
+    (pe_layer): PositionEmbeddingRandom()
+  )
+  (exo_cls): Sequential(
+    (0): Linear(in_features=512, out_features=256, bias=True)
+    (1): GELU()
+    (2): Linear(in_features=256, out_features=36, bias=True)
+  )
+  (noun_transform): Sequential(
+    (0): Linear(in_features=512, out_features=512, bias=True)
+    (1): GELU()
+    (2): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (reason): Sequential(
+    (0): Linear(in_features=1024, out_features=512, bias=True)
+    (1): GELU()
+    (2): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (context_aware): Sequential(
+    (0): Linear(in_features=1024, out_features=512, bias=True)
+    (1): GELU()
+    (2): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (active_transform): Sequential(
+    (0): Linear(in_features=512, out_features=512, bias=True)
+    (1): GELU()
+    (2): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (passive_transform): Sequential(
+    (0): Linear(in_features=512, out_features=512, bias=True)
+    (1): GELU()
+    (2): Linear(in_features=512, out_features=512, bias=True)
+  )
+)
+Optimizer:
+AdamW (
+Parameter Group 0
+    amsgrad: False
+    betas: [0.9, 0.95]
+    eps: 1e-08
+    initial_lr: 0.0001
+    lr: 0.0001
+    weight_decay: 0.01
+
+Parameter Group 1
+    amsgrad: False
+    betas: [0.9, 0.95]
+    eps: 1e-08
+    initial_lr: 1e-05
+    lr: 1e-05
+    weight_decay: 0.01
+)
+============Training Epoch 0============
+Training loss: 34.45467157363892, KL loss: 2.3320605635643004, Sim loss: 0.5441526398062706, Exo CLS loss: 2.568397957086563, 
+Noun sim loss: 0.9014907449483871, Part sim loss: 0.9561417877674103 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=2.565458059310913, SIM=0.1611153483390808, NSS=1.264907717704773
+noun sim: 0.7838343858718873, part sim: 0.9493825078010559
+New best KLD: 2.565458059310913, 0.1611153483390808, 1.264907717704773
+============Training Epoch 1============
+Training loss: 16.323244190216066, KL loss: 1.9590512990951539, Sim loss: 0.385788106918335, Exo CLS loss: 0.9755242615938187, 
+Noun sim loss: 0.6555783808231354, Part sim loss: 0.954907351732254 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=2.2446322441101074, SIM=0.23651742935180664, NSS=1.5498456954956055
+noun sim: 0.6116541981697082, part sim: 0.9697388529777526
+New best KLD: 2.2446322441101074, 0.23651742935180664, 1.5498456954956055
+============Training Epoch 2============
+Training loss: 12.25227656364441, KL loss: 1.6347376227378845, Sim loss: 0.24242230951786042, Exo CLS loss: 0.7582821428775788, 
+Noun sim loss: 0.5127158656716346, Part sim loss: 0.9777830690145493 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=2.111875534057617, SIM=0.23908312618732452, NSS=1.8424482345581055
+noun sim: 0.4960408389568329, part sim: 0.9880657911300659
+New best KLD: 2.111875534057617, 0.23908312618732452, 1.8424482345581055
+============Training Epoch 3============
+Training loss: 9.721277284622193, KL loss: 1.4689914166927338, Sim loss: 0.16014230102300644, Exo CLS loss: 0.6144280135631561, 
+Noun sim loss: 0.40746882408857343, Part sim loss: 0.9911391139030457 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=2.1241304874420166, SIM=0.25890466570854187, NSS=1.7841203212738037
+noun sim: 0.3924152612686157, part sim: 0.9961811184883118
+============Training Epoch 4============
+Training loss: 8.821454787254334, KL loss: 1.3406701803207397, Sim loss: 0.11164866015315056, Exo CLS loss: 0.5955987825989724, 
+Noun sim loss: 0.30850344747304914, Part sim loss: 0.9980659157037735 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=2.058938503265381, SIM=0.2610321640968323, NSS=1.9535521268844604
+noun sim: 0.2937096685171127, part sim: 1.002425444126129
+New best KLD: 2.058938503265381, 0.2610321640968323, 1.9535521268844604
+============Training Epoch 5============
+Training loss: 7.101325106620789, KL loss: 1.1833430856466294, Sim loss: 0.07603836599737405, Exo CLS loss: 0.48298144042491914, 
+Noun sim loss: 0.2273505635559559, Part sim loss: 1.004332846403122 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.8411623239517212, SIM=0.28114286065101624, NSS=2.4386184215545654
+noun sim: 0.23083091676235198, part sim: 1.0065441131591797
+New best KLD: 1.8411623239517212, 0.28114286065101624, 2.4386184215545654
+============Training Epoch 6============
+Training loss: 7.057475388050079, KL loss: 1.1390612065792083, Sim loss: 0.048408189602196214, Exo CLS loss: 0.5154634036123753, 
+Noun sim loss: 0.1790186047554016, Part sim loss: 1.0067969918251038 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=2.0184407234191895, SIM=0.24611374735832214, NSS=2.267225742340088
+noun sim: 0.1803826630115509, part sim: 1.0049636960029602
+============Training Epoch 7============
+Training loss: 6.881166744232178, KL loss: 1.11926389336586, Sim loss: 0.03493725620210171, Exo CLS loss: 0.5164674632251263, 
+Noun sim loss: 0.1476379744708538, Part sim loss: 1.0021761685609818 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.7231478691101074, SIM=0.3182127773761749, NSS=2.612569570541382
+noun sim: 0.15444637835025787, part sim: 0.9960386395454407
+New best KLD: 1.7231478691101074, 0.3182127773761749, 2.612569570541382
+============Training Epoch 8============
+Training loss: 5.444980871677399, KL loss: 1.0413705289363862, Sim loss: 0.02251237127929926, Exo CLS loss: 0.39428531266748906, 
+Noun sim loss: 0.13655757941305638, Part sim loss: 0.9907593578100204 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.7386819124221802, SIM=0.30561530590057373, NSS=2.6098105907440186
+noun sim: 0.13679071068763732, part sim: 0.9799174308776856
+============Training Epoch 9============
+Training loss: 5.189805293083191, KL loss: 1.0162444710731506, Sim loss: 0.020448117051273584, Exo CLS loss: 0.37468242198228835, 
+Noun sim loss: 0.12541113272309304, Part sim loss: 0.9684431254863739 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.7183161973953247, SIM=0.29668697714805603, NSS=2.681814432144165
+noun sim: 0.12677810192108155, part sim: 0.953485369682312
+New best KLD: 1.7183161973953247, 0.29668697714805603, 2.681814432144165
+============Training Epoch 10============
+Training loss: 6.363843226432801, KL loss: 0.9846602559089661, Sim loss: 0.019225972704589367, Exo CLS loss: 0.4971053957939148, 
+Noun sim loss: 0.1217357061803341, Part sim loss: 0.9413363695144653 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.7724170684814453, SIM=0.28360411524772644, NSS=2.6134042739868164
+noun sim: 0.12152989953756332, part sim: 0.9276367545127868
+============Training Epoch 11============
+Training loss: 5.166963839530945, KL loss: 0.9391636073589325, Sim loss: 0.019457284035161136, Exo CLS loss: 0.3822366490960121, 
+Noun sim loss: 0.11935069151222706, Part sim loss: 0.9151019930839539 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.7360070943832397, SIM=0.3008982539176941, NSS=2.5544049739837646
+noun sim: 0.12226405739784241, part sim: 0.9011310577392578
+============Training Epoch 12============
+Training loss: 5.3254764676094055, KL loss: 0.9006895542144775, Sim loss: 0.02148843207396567, Exo CLS loss: 0.4001847840845585, 
+Noun sim loss: 0.11925381235778332, Part sim loss: 0.8880089819431305 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.7686938047409058, SIM=0.29088014364242554, NSS=2.4834961891174316
+noun sim: 0.1201132982969284, part sim: 0.8749762177467346
+============Training Epoch 13============
+Training loss: 5.0988803029060366, KL loss: 0.879678264260292, Sim loss: 0.017729745875112713, Exo CLS loss: 0.3838872887194157, 
+Noun sim loss: 0.11700614579021931, Part sim loss: 0.8602555185556412 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.7403103113174438, SIM=0.32105734944343567, NSS=2.4470348358154297
+noun sim: 0.11670452654361725, part sim: 0.8466903686523437
+============Training Epoch 14============
+Training loss: 4.610835719108581, KL loss: 0.8588334351778031, Sim loss: 0.013606189261190593, Exo CLS loss: 0.34187759794294836, 
+Noun sim loss: 0.11426212899386883, Part sim loss: 0.8290225178003311 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.6608604192733765, SIM=0.31721389293670654, NSS=2.7512619495391846
+noun sim: 0.11479589641094208, part sim: 0.8151569843292237
+New best KLD: 1.6608604192733765, 0.31721389293670654, 2.7512619495391846
+============Training Epoch 15============
+Training loss: 4.526771783828735, KL loss: 0.8789453148841858, Sim loss: 0.010554821137338877, Exo CLS loss: 0.33489979431033134, 
+Noun sim loss: 0.11321246810257435, Part sim loss: 0.8006780445575714 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.778924822807312, SIM=0.3096967339515686, NSS=2.3968071937561035
+noun sim: 0.11176564693450927, part sim: 0.7904453039169311
+============Training Epoch 16============
+Training loss: 6.221423947811127, KL loss: 0.8812153905630111, Sim loss: 0.010959514614660293, Exo CLS loss: 0.504067575931549, 
+Noun sim loss: 0.11238394677639008, Part sim loss: 0.7755368292331696 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.6647993326187134, SIM=0.32665929198265076, NSS=2.7619707584381104
+noun sim: 0.11191533505916595, part sim: 0.7637296199798584
+============Training Epoch 17============
+Training loss: 4.5475803971290585, KL loss: 0.8892942517995834, Sim loss: 0.012613945384509861, Exo CLS loss: 0.3345895014703274, 
+Noun sim loss: 0.11172507144510746, Part sim loss: 0.7452659547328949 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.8503259420394897, SIM=0.30712780356407166, NSS=2.254558801651001
+noun sim: 0.11061420440673828, part sim: 0.7333828449249268
+============Training Epoch 18============
+Training loss: 4.131469190120697, KL loss: 0.8323069185018539, Sim loss: 0.015083624282851815, Exo CLS loss: 0.2965647719800472, 
+Noun sim loss: 0.11065422855317593, Part sim loss: 0.7202403306961059 
+
+learning rate:0.0001
+
+Result on AGD: 
+KLD=1.8606983423233032, SIM=0.26339560747146606, NSS=2.364835262298584
+noun sim: 0.1093543991446495, part sim: 0.7103277325630188
+============Training Epoch 19============
+Training loss: 4.148663711547852, KL loss: 0.7898619592189788, Sim loss: 0.013739468855783343, Exo CLS loss: 0.3041771985590458, 
+Noun sim loss: 0.11023994348943233, Part sim loss: 0.6939507275819778 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.764149785041809, SIM=0.3029526472091675, NSS=2.454974889755249
+noun sim: 0.10853517949581146, part sim: 0.6816462755203248
+============Training Epoch 20============
+Training loss: 3.7160752177238465, KL loss: 0.7203529983758926, Sim loss: 0.010701493825763464, Exo CLS loss: 0.27122839652001857, 
+Noun sim loss: 0.1094083733856678, Part sim loss: 0.6701491743326187 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.795930027961731, SIM=0.3178342878818512, NSS=2.33323335647583
+noun sim: 0.10799254924058914, part sim: 0.6657149195671082
+============Training Epoch 21============
+Training loss: 3.6163504481315614, KL loss: 0.6895810008049011, Sim loss: 0.009970342391170561, Exo CLS loss: 0.26524452269077303, 
+Noun sim loss: 0.10898821502923965, Part sim loss: 0.6563256084918976 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.7564339637756348, SIM=0.30369073152542114, NSS=2.450803756713867
+noun sim: 0.10768554359674454, part sim: 0.6525691270828247
+============Training Epoch 22============
+Training loss: 3.9102340281009673, KL loss: 0.6888871788978577, Sim loss: 0.009418662963435053, Exo CLS loss: 0.2953965198248625, 
+Noun sim loss: 0.10889260731637478, Part sim loss: 0.6430246025323868 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.756392478942871, SIM=0.2956332266330719, NSS=2.4874706268310547
+noun sim: 0.10670546889305114, part sim: 0.6364788889884949
+============Training Epoch 23============
+Training loss: 3.6928858041763304, KL loss: 0.6803669601678848, Sim loss: 0.008460780815221369, Exo CLS loss: 0.2757622182369232, 
+Noun sim loss: 0.10800813250243664, Part sim loss: 0.6228073209524154 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.7506699562072754, SIM=0.3191089928150177, NSS=2.414238691329956
+noun sim: 0.10673603117465973, part sim: 0.6161783814430237
+============Training Epoch 24============
+Training loss: 3.3185552597045898, KL loss: 0.6598468512296677, Sim loss: 0.008650131255853922, Exo CLS loss: 0.24037076495587825, 
+Noun sim loss: 0.10799944847822189, Part sim loss: 0.6050001084804535 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.7627193927764893, SIM=0.3237531781196594, NSS=2.4127886295318604
+noun sim: 0.10563029646873474, part sim: 0.6016253113746644
+============Training Epoch 25============
+Training loss: 3.7552749037742617, KL loss: 0.633239172399044, Sim loss: 0.008301012776792049, Exo CLS loss: 0.2872437313199043, 
+Noun sim loss: 0.10767697952687741, Part sim loss: 0.5891131341457367 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.7952860593795776, SIM=0.30997028946876526, NSS=2.34635853767395
+noun sim: 0.10513559132814407, part sim: 0.5820170879364014
+============Training Epoch 26============
+Training loss: 3.2726396799087523, KL loss: 0.6122921779751778, Sim loss: 0.007657822733744979, Exo CLS loss: 0.24194643329828977, 
+Noun sim loss: 0.10724118985235691, Part sim loss: 0.5706369459629059 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.7961221933364868, SIM=0.29982611536979675, NSS=2.374471426010132
+noun sim: 0.1049323707818985, part sim: 0.5646976590156555
+============Training Epoch 27============
+Training loss: 2.9964415669441222, KL loss: 0.6089642971754075, Sim loss: 0.005338607309386134, Exo CLS loss: 0.21718766782432794, 
+Noun sim loss: 0.10710746683180332, Part sim loss: 0.5510702908039093 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.779606819152832, SIM=0.2983354926109314, NSS=2.4228038787841797
+noun sim: 0.10425005704164506, part sim: 0.5440479397773743
+============Training Epoch 28============
+Training loss: 3.3992152094841, KL loss: 0.5862411290407181, Sim loss: 0.00506002027541399, Exo CLS loss: 0.26023586355149747, 
+Noun sim loss: 0.10677889585494996, Part sim loss: 0.5323637366294861 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.7513154745101929, SIM=0.3060290515422821, NSS=2.4695348739624023
+noun sim: 0.10375990867614746, part sim: 0.5264295339584351
+============Training Epoch 29============
+Training loss: 3.46233771443367, KL loss: 0.5886994212865829, Sim loss: 0.004501335124950856, Exo CLS loss: 0.267114769667387, 
+Noun sim loss: 0.10597685463726521, Part sim loss: 0.5150042027235031 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.8064076900482178, SIM=0.32925844192504883, NSS=2.348886251449585
+noun sim: 0.10353532731533051, part sim: 0.5093487083911896
+============Training Epoch 30============
+Training loss: 3.6752500355243685, KL loss: 0.5878782153129578, Sim loss: 0.005046480474993587, Exo CLS loss: 0.2881871681660414, 
+Noun sim loss: 0.10543199852108956, Part sim loss: 0.4960339069366455 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.7555748224258423, SIM=0.30648326873779297, NSS=2.440396308898926
+noun sim: 0.10311601310968399, part sim: 0.4901312530040741
+============Training Epoch 31============
+Training loss: 2.9723966896533964, KL loss: 0.5803323209285736, Sim loss: 0.005364209192339331, Exo CLS loss: 0.21850322633981706, 
+Noun sim loss: 0.10572649128735065, Part sim loss: 0.47663566172122956 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.7987090349197388, SIM=0.2907488942146301, NSS=2.362013339996338
+noun sim: 0.10329958647489548, part sim: 0.46868537068367006
+============Training Epoch 32============
+Training loss: 3.6564756274223327, KL loss: 0.5520755618810653, Sim loss: 0.005991196399554611, Exo CLS loss: 0.2892980922013521, 
+Noun sim loss: 0.1058420069515705, Part sim loss: 0.4566519111394882 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.7432283163070679, SIM=0.33158740401268005, NSS=2.457216501235962
+noun sim: 0.10294186621904373, part sim: 0.4532200932502747
+============Training Epoch 33============
+Training loss: 3.6085178017616273, KL loss: 0.5621545508503913, Sim loss: 0.0071541656041517855, Exo CLS loss: 0.2825190328061581, 
+Noun sim loss: 0.10539112761616706, Part sim loss: 0.4424011528491974 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.7808219194412231, SIM=0.318646103143692, NSS=2.4317126274108887
+noun sim: 0.10269413292407989, part sim: 0.4371411085128784
+============Training Epoch 34============
+Training loss: 3.35533230304718, KL loss: 0.539022745192051, Sim loss: 0.005837437312584371, Exo CLS loss: 0.2610313715413213, 
+Noun sim loss: 0.10512120947241783, Part sim loss: 0.42500206381082534 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.7842615842819214, SIM=0.3027609586715698, NSS=2.403238534927368
+noun sim: 0.10249942094087601, part sim: 0.4201316833496094
+============Training Epoch 35============
+Training loss: 3.042145276069641, KL loss: 0.5482137501239777, Sim loss: 0.006177977658808231, Exo CLS loss: 0.22862517312169076, 
+Noun sim loss: 0.10496077463030815, Part sim loss: 0.40939252376556395 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.8249024152755737, SIM=0.29768818616867065, NSS=2.310854911804199
+noun sim: 0.10213496834039688, part sim: 0.40368967056274413
+============Training Epoch 36============
+Training loss: 3.1535342574119567, KL loss: 0.5330729246139526, Sim loss: 0.006078780104871839, Exo CLS loss: 0.24148708917200565, 
+Noun sim loss: 0.10522992201149464, Part sim loss: 0.3957277208566666 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.8517361879348755, SIM=0.30370649695396423, NSS=2.2494242191314697
+noun sim: 0.10207484662532806, part sim: 0.3911529779434204
+============Training Epoch 37============
+Training loss: 3.106216084957123, KL loss: 0.5099762558937073, Sim loss: 0.005755770509131253, Exo CLS loss: 0.2395957387983799, 
+Noun sim loss: 0.10478224493563175, Part sim loss: 0.3794247731566429 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.8373939990997314, SIM=0.30514761805534363, NSS=2.3002829551696777
+noun sim: 0.10205252915620804, part sim: 0.37400888204574584
+============Training Epoch 38============
+Training loss: 2.884024530649185, KL loss: 0.5025379404425621, Sim loss: 0.0068680124473758045, Exo CLS loss: 0.2171728253364563, 
+Noun sim loss: 0.10472065173089504, Part sim loss: 0.3635759502649307 
+
+learning rate:5e-05
+
+Result on AGD: 
+KLD=1.8453418016433716, SIM=0.31881752610206604, NSS=2.2998921871185303
+noun sim: 0.10165822207927704, part sim: 0.3628638505935669
+============Training Epoch 39============
+Training loss: 3.26030957698822, KL loss: 0.488893024623394, Sim loss: 0.006246391090098768, Exo CLS loss: 0.25686331652104855, 
+Noun sim loss: 0.10475985370576382, Part sim loss: 0.35559614598751066 
+
+learning rate:2.5e-05
+
+Result on AGD: 
+KLD=1.827008605003357, SIM=0.3038184940814972, NSS=2.3268473148345947
+noun sim: 0.1018200770020485, part sim: 0.35232728719711304
