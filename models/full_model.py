@@ -102,13 +102,10 @@ class ModelAGDsup(nn.Module):
         if passive_f !=None and active_f != None:
             passive_feature = passive_f.float().unsqueeze(1)
             active_feature = active_f.float().unsqueeze(1)
-            # pred_context_aware = self.context_aware(torch.cat([pred_part, active_feature+passive_feature], dim=2)) ## 3_ours => 패기... 로그도 안남김
-            # pred_context_aware = self.context_aware(torch.cat([v, active_feature+passive_feature], dim=2)) ## 4_ours 이거도 별로...
-            pred_context_aware = self.context_aware(torch.cat([active_feature,passive_feature], dim=2)) ## 5_ours << -------- selected
+            pred_context_aware = self.context_aware(torch.cat([active_feature,passive_feature], dim=2))
             
             
-            aff_token, _, _ = self.verb_fuser(x,  pred_part+v+passive_feature) ## wo something
-            # aff_token, _, _ = self.verb_fuser(x, pred_part+v+passive_feature+active_feature)
+            aff_token, _, _ = self.verb_fuser(x, pred_part+v+passive_feature+active_feature)
         else:
             aff_token, _, _ = self.verb_fuser(x, pred_part+v) ## 원본
         
@@ -132,4 +129,5 @@ class ModelAGDsup(nn.Module):
                 return pred_heatmap, pred_noun, pred_part, pred_context_aware 
             else:
                 return pred_heatmap, pred_noun, pred_part
+
     
