@@ -6,13 +6,9 @@ This is the PyTorch implementation of "Affordance Grounding in Contextual Intera
 
 1. Please follow [LOCATE](https://github.com/Reagan1311/LOCATE) to prepare the AGD20K datasets. 
 
-2. Please download the additional data1 (the initial and refined pseudo labels, the pre-extracted text features, the detected objects in the exocentric images, the recorded similarity for selecting exocentric images) at [here](https://drive.google.com/file/d/1m0A1ke7n2aplJXFqLJtV2vcDtrpKlCLc/view?usp=sharing), and merge the folder with the original AGD20K dataset.
+2. Please download the pre-trained ViT-B/16 weights from [CLIP](https://openaipublic.azureedge.net/clip/models/5806e77cd80f8b59890b7e101eabd078d9fb84e6937f9e85e4ecb61988df416f/ViT-B-16.pt), which is used to initialize the visual encoder during training.
 
-3. Please download the additional data2 (The context-aware dataset generated in this study) at [here](https://drive.google.com/drive/folders/1_9VLGCRB4WcFzyGkSwrkrtYOuwLnwzrK?usp=sharing), and separate it from the folder containing the original AGD20K dataset.
-
-4. Please download the pre-trained ViT-B/16 weights from [CLIP](https://openaipublic.azureedge.net/clip/models/5806e77cd80f8b59890b7e101eabd078d9fb84e6937f9e85e4ecb61988df416f/ViT-B-16.pt), which is used to initialize the visual encoder during training.
-
-5. Please donwload the checkpoint for this study from [here](). 
+3. Please donwload the checkpoint for this study from [here](). 
 
 ## Requirements
 
